@@ -1,0 +1,32 @@
+<link rel="import" href="https://cdn.rawgit.com/Optinomic/apps/4b9e90d1/lib/polymer/elements/optinomic-redux-store.html">
+<dom-module id="notification-bar">
+    <template>
+        <style include="shared-styles">
+        :host {
+            display: block;
+        }
+        </style>
+        <template is="dom-if" if="[[loading]]">
+            <p>Loading...</p>
+        </template>
+        <template is="dom-if" if="[[username]]">
+            <p>Welcome [[username]]!</p>
+        </template>
+    </template>
+    <script>
+    Polymer({
+        is: 'notification-bar',
+        behaviors: [ReduxBehavior],
+        properties: {
+            loading: {
+                type: Boolean,
+                statePath: 'loading'
+            },
+            username: {
+                type: String,
+                statePath: 'username'
+            }
+        }
+    });
+    </script>
+</dom-module>
